@@ -27,10 +27,25 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
+      //Messages.push(data);
+
+      //iterate through data where i = length of data, i > 0, i --
+      var limit = Messages._data.length;
+      for (var i = data.length - 1; i >= limit; i--) {
+        //push each element to the Messages
+        Messages.push(data[i]);
+        Rooms.updateList(data[i]);
+      }
+
+      RoomsView.render();
+      MessagesView.initialize();
+
+
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
     });
+    App.stopSpinner();
   },
 
   startSpinner: function() {
