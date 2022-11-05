@@ -18,13 +18,10 @@ var Friends = {
       //if it doesn't add our friend to our array
       Friends._data.push(username);
     } else {
-      //if there's only one data item, set our data to empty array
-      // if (Friends._data.length === 1) {
-      //   Friends._data = [];
-      // } else {
+      //'toggle' friend off by removing it from our friends array
       Friends._data.splice(index, 1);
     }
-
+    //App fetch to refresh the feed with css changes
     App.fetch();
   }
 
