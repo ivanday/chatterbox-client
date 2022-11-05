@@ -5,50 +5,57 @@ var RoomsView = {
 
   $button: $('#rooms button'),
   $select: $('#rooms select'),
+  roomsAdded: [],
 
   initialize: function() {
-    // TODO: Perform any work which needs to be done
-    // when this view loads.
-    RoomsView.render();
+    // event handlers
     RoomsView.$select.on('change', (event) => {
-      console.log($('#rooms select:selected'));
+      RoomsView.handleChange(event);
     });
 
+    RoomsView.$button.on('click', (event) => {
+      RoomsView.handleClick(event);
+    });
   },
 
   // add all the rooms we have to the select dropdown menu
   render: function() {
-    // TODO: Render out the list of rooms.
-
-    /*
-    <select name="cars" id="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
-    </select>
-    */
-    //iterate through the keys of our Rooms.data
-    //append the key to our $select
     Object.keys(Rooms._data).forEach((value) => {
-      RoomsView.$select.append('<option value=' + value + '>' + value + '</option>');
+      RoomsView.renderRoom(value);
     });
   },
 
+
   renderRoom: function(roomname) {
-    // TODO: Render out a single room.
-    //empty #chat
-    MessagesView.$chats.empty();
-    var messages = Rooms._data[roomname];
-    MessagesView.render(messages);
+    // Check if room has already been added to the dropdown
+    var toAppend = true;
+    if (RoomsView.roomsAdded.indexOf(roomname) > -1) {
+      toAppend = false;
+    }
+
+    // Add room to dropdown
+    if (toAppend) {
+      RoomsView.$select.append('<option value=' + roomname + '>' + roomname + '</option>');
+      RoomsView.roomsAdded.push(roomname);
+    }
   },
 
   handleChange: function(event) {
-    // TODO: Handle a user selecting a different room.
+    // Render selected room
+    App.room = $('select option:checked').text();
+    MessagesView.render(Rooms._data[App.room]);
   },
 
   handleClick: function(event) {
-    // TODO: Handle the user clicking the "Add Room" button.
+    // create alert to get desired room name
+    var $alert = $('<alert></alert>');
+    var roomName = prompt('Enter room name');
+
+    // create the new room
+    Rooms.add(roomName);
+    RoomsView.renderRoom(roomName);
+    App.room = roomName;
+    RoomsView.$select.val(roomName);
   }
 
 };

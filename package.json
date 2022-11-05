@@ -4,12 +4,13 @@
   "description": "Build a component-based chat-client using jQuery",
   "dependencies": {
     "chai": "^4.2.0",
+    "dompurify": "^2.4.0",
     "jquery": "^3.5.1",
+    "jsdom": "^20.0.2",
     "mocha": "^5.2.0",
     "sinon": "^6.3.5",
     "underscore": "^1.11.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "npx live-server"
   },

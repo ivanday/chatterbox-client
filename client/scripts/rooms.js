@@ -15,11 +15,17 @@ var Rooms = {
     Rooms._data[nameOfRoom] = [];
   },
 
+  add: function (name) {
+    console.log('appease spec runner');
+    Rooms.addRooms(name);
+  },
+
   updateList: function(message) {
     if (Rooms._data[message.roomname] === undefined) {
       Rooms.addRooms(message.roomname);
     }
     Rooms._data[message.roomname].push(message);
+
   }
 
   // takes in a message, adds that message to the room's bucket

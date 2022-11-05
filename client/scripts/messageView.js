@@ -6,12 +6,12 @@ var MessageView = {
   // here: https://underscorejs.org/#template.
   // TODO: Update this template accordingly.
   render: function (message) {
-    return `
+    return $(`
       <div class="chat">
-        <div class="username">${message.username}</div>
-        <div>${message.text}</div>
+        <div class="username">${DOMPurify.sanitize(message.username)}</div>
+        <div>${DOMPurify.sanitize(message.text)}</div>
       </div>
-    `;
+    `);
   }
 
 };

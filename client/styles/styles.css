@@ -3,6 +3,24 @@ body {
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
+    background: linear-gradient(-45deg, #f24028, #ed2a75, #1eb3e9, #23d564);
+    background-size: 400% 400%;
+    animation-name: gradient;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes gradient {
+    0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
 }
 
 #main, #chats {
@@ -13,6 +31,7 @@ body {
     padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
+    filter: drop-shadow(0 0 0 5px black);
 }
 
 #main h1 {
@@ -63,14 +82,21 @@ form input[type=text] {
     padding: 5px;
     margin-bottom: 5px;
     background-color: #eee;
+    border-radius: 10px;
 }
 
 .chat .username {
     font-weight: 800;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.chat .message {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .chat:hover {
-    background-color: #ddd;
+    transform: scale(1.1);
+    filter: drop-shadow(2px 3px 3px #333);
 }
 
 .spinner {
@@ -87,4 +113,5 @@ form input[type=text] {
     color: #fff;
     background-color: #0090da;
 }
+
 

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="client/styles/styles.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
+    <script src="node_modules/dompurify/dist/purify.js"></script>
+    <script src="https://kit.fontawesome.com/fbcdb24a9e.js" crossorigin="anonymous"></script>
     <script>
       // DO NOT MODIFY THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
@@ -23,7 +25,7 @@
   </head>
   <body>
     <div id="main">
-      <h1>chatterbox</h1>
+      <h1><i class="fa-brands fa-rocketchat"></i> chatterbox</h1>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
@@ -32,7 +34,7 @@
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
-        <input type="submit" name="submit" class="submit"/>
+        <input type="submit" name="submit" class="submit"/><i class="fa-solid fa-circle-arrow-right"></i>
       </form>
     </div>
     <div id="chats"></div>

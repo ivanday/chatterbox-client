@@ -8,6 +8,16 @@ var Parse = {
 
   create: function(message, successCB, errorCB = null) {
     // TODO: send a request to the Parse API to save the message
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: JSON.stringify(message),
+      contentType: 'application/json',
+      success: successCB,
+      error: function(error) {
+        console.error('chatterbox: Failed to fetch messages', error);
+      }
+    });
   },
 
   readAll: function(successCB, errorCB = null) {
@@ -18,6 +28,20 @@ var Parse = {
       contentType: 'application/json',
       success: successCB,
       error: errorCB || function(error) {
+        console.error('chatterbox: Failed to fetch messages', error);
+      }
+    });
+  },
+
+  post: function(messageObj, successCB) {
+    //$.post(Parse.server, messageObj);
+    $.ajax({
+      url: Parse.server,
+      type: 'POST',
+      data: JSON.stringify(messageObj),
+      contentType: 'application/json',
+      success: successCB,
+      error: function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
       }
     });

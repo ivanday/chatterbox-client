@@ -3,11 +3,29 @@
 // with and manipulate the data.
 
 var Friends = {
-  // TODO: Define how you want to store your list of friends.
 
-  _data: null,
+  _data: [],
 
-  // TODO: Define methods which allow you to add, toggle,
-  // and check the friendship status of other users.
+  toggleStatus: function (username) {
+    // check _data, push if not there, remove if it is
+    // if pushed, set
+
+    //store the index of username given in our friends data
+    var index = Friends._data.indexOf(username);
+
+    //check if data exists
+    if (index === -1) {
+      //if it doesn't add our friend to our array
+      Friends._data.push(username);
+    } else {
+      //if there's only one data item, set our data to empty array
+      // if (Friends._data.length === 1) {
+      //   Friends._data = [];
+      // } else {
+      Friends._data.splice(index, 1);
+    }
+
+    App.fetch();
+  }
 
 };
